@@ -34,7 +34,7 @@ onMounted(() => {
   })
 })
 onBeforeUnmount(() => {
-  game.closeAll()
+  game.clearAll()
   game.clear()
 })
 // setTimeout(()=>{
@@ -239,6 +239,15 @@ class Game {
       let Score = _score.value?.getScore()
       _calc.value?.show(this.scoreLst, this.song as Song, Score as number, nan)
     }
+  }
+  clearAll(){
+    this.timeoutLst.map(e => {
+      clearTimeout(e)
+      if (!video.paused) {
+      video.pause()
+      _score.value?.hide()
+    }
+    })
   }
   clear() {
     console.log('clear')

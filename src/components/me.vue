@@ -25,14 +25,14 @@ let a = () => {
     if (item.calc == 'S' || item.calc == 'SS' || item.calc == 'SS' || item.calc == 'A') {
       return a + 1
     }
-  }) || '0'
+  },0) || '0'
 }
 let showEx = () => {
   return better.value.reduce((a = 0, item: any) => {
     if (item.songNan >= 8) {
       return a + 1
     }
-  }) || '0'
+  },0) || '0'
 }
 </script>
 

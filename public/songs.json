@@ -13,7 +13,32 @@
         181000
       ],
       "time": 233571,
-      "bpm": 63
+      "bpm": 63,
+      "tag": "摇滚"
+    },
+    {
+      "name": "Mantra",
+      "url": "https://illl.li/asongs/Mantra.mp4",
+      "imgUrl": "https://illl.li/asongs/Mantra.jpg",
+      "startTime": 14872,
+      "endTime": 124363,
+      "stepTime": [
+      ],
+      "time": 147308,
+      "bpm": 117,
+      "tag": "kpop"
+    },
+    {
+      "name": "Mantra",
+      "url": "https://illl.li/asongs/Mantra.mp4",
+      "imgUrl": "https://illl.li/asongs/Mantra.jpg",
+      "startTime": 14872,
+      "endTime": 124363,
+      "stepTime": [
+      ],
+      "time": 147308,
+      "bpm": 117,
+      "tag": "kpop"
     },
     {
       "name": "测试",

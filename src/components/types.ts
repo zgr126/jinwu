@@ -19,6 +19,7 @@ export class Song {
   rpm: number = 0;
   bpm: number = 0;
   stepTime: number[] = [];
+  tag: string = "";
 }
 
 export enum good {

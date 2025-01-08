@@ -1,18 +1,14 @@
 <template>
   <div class="bk"></div>
-  <div class="fenlei" @click="fenlei">
-    <div class="fenl1">流行</div>
-    <div class="fenl2">摇滚</div>
-    <div class="fenl3">重金属</div>
-    <div class="fenl4">古风</div>
-    <div class="fenl5"></div>
-    <div class="fenl6"></div>
-    <div class="fenl7"></div>
+  <div class="fenlei" >
+    <div :class="[item.class, activeF == item.name?'active':'']" @click="changeF(item.name)" v-for="(item,index) in fenl">
+      {{ item.name }}
+    </div>
   </div>
 
   <div class="my">
     <div class="setting" @click="tome">我的</div>
-    <div class="setting" @click="fenlei">设置</div>
+    <div class="setting" >设置</div>
 
   </div>
   <div class="waveWrapper waveAnimation">
@@ -56,19 +52,25 @@
         <div v-if="_index == 1" class="nan2 relative nan" @click="start(nan.level, 1)">{{ nan.level }}
           <aaa class="aaa" :size="80" v-if="betterScore[_index]" :value="betterScore[_index]">
           </aaa>
-          <img class="lock" v-if="!betterScore[_index - 1]" src="/锁.png">
+          <img class="lock" v-if="!(
+            betterScore[_index - 1]== 'A' || betterScore[_index - 1]== 'S' || betterScore[_index - 1]== 'SS' || betterScore[_index - 1]== 'SSS'
+            )" src="/lock.png">
         </div>
         <div v-if="_index == 2" class="nan3 relative nan" @click="start(nan.level, 2)">{{ nan.level }}
           <aaa class="aaa" :size="80" v-if="betterScore[_index]" :value="betterScore[_index]">
           </aaa>
-          <img class="lock" v-if="!betterScore[_index - 1]" src="/锁.png">
+          <img class="lock" v-if="!(
+            betterScore[_index - 1]== 'A' || betterScore[_index - 1]== 'S' || betterScore[_index - 1]== 'SS' || betterScore[_index - 1]== 'SSS'
+            )" src="/lock.png">
         </div>
         <div v-if="_index == 3 && (
           betterScore[_index - 1] == 'A' ||
           betterScore[_index - 1] == 'S' ||
           betterScore[_index - 1] == 'SS' ||
           betterScore[_index - 1] == 'SSS')" class="nan4 relative nan" @click="start(nan.level, 3)">EX
-          <aaa class="aaa" :size="80" v-if="betterScore[_index]" :value="betterScore[_index]">
+          <aaa class="aaa" :size="80" v-if="!(
+            betterScore[_index - 1]== 'A' || betterScore[_index - 1]== 'S' || betterScore[_index - 1]== 'SS' || betterScore[_index - 1]== 'SSS'
+            )" :value="betterScore[_index]">
           </aaa>
         </div>
       </div>
@@ -85,14 +87,34 @@ import aaa from './A.vue'
 const router = useRouter()
 let songs = import('../../public/songs.json')
 let songLst = ref<Song[]>([])
+let songSourceLst = ref<Song[]>([])
 let selectOne = ref<Song | null>(null)
 let betterHistory = JSON.parse(localStorage.getItem('betterHistory') || '[]')
 let betterScore = ref<string[]>([])
+
+let fenl = ref([
+  {name: '全部', class: 'fenl0'},
+  {name: '流行', class: 'fenl1'},
+  {name: '摇滚', class: 'fenl2'},
+  {name: 'kpop', class: 'fenl3'},
+  {name: '重金属', class: 'fenl4'},
+  {name: '民谣', class: 'fenl5'},
+  {name: '', class: 'fenl6'},
+  {name: '', class: 'fenl7'},
+])
+
+let activeF = ref('全部')
+let changeF = (tag: string)=>{
+  activeF.value = tag
+  songLst.value = []
+  if (tag === '全部'){
+    songLst.value = songSourceLst.value
+  }else{
+    songLst.value = songSourceLst.value.filter(item=>item.tag.indexOf(tag)!=-1)
+  }
+}
 let tome = () => {
   router.push({ name: 'me' })
-}
-let fenlei = () => {
-  alert('功能研发中')
 }
 let makeNan = (song: Song) => {
 
@@ -160,9 +182,13 @@ let start = (nan: number, _nan: number) => {
   if (nan == 0) {
 
   } else {
+    let r = Math.random()
     if (betterScore.value[_nan - 1] == '') {
-      let r = Math.random()
+      
       alert(r < 0.5 ? '先完成前面的难度' : "行么你？")
+      return
+    }else if (betterScore.value[_nan - 1] == 'D' || betterScore.value[_nan - 1] == 'C' || betterScore.value[_nan - 1] == 'B'){
+      alert(r < 0.5 ? `就${betterScore.value[_nan - 1]}评分也好意思挑战我？` : "？？？")
       return
     }
   }
@@ -208,11 +234,13 @@ songs.then(_songs => {
     value.endTime = e.endTime
     value.stepTime = e.stepTime as number[]
     value.bpm = e.bpm as number
+    value.tag = e.tag as string
     if (e.hide) {
       return
     }
     makeNan(value)
     songLst.value.push(value)
+    songSourceLst.value.push(value)
   })
 })
 
@@ -244,7 +272,9 @@ let cancel = () => {
   left: 0;
   z-index: 101;
 }
-
+.fenl0{
+  background-color: #c2c2c2;
+}
 .fenl1 {
   background-color: #f7b1b1;
 }
@@ -280,13 +310,15 @@ let cancel = () => {
   line-height: 50px;
   cursor: pointer;
 }
-
+.fenlei .active{
+  transform: scale(1.2);
+}
 .fenlei>div:hover {
   transform: scale(1.2);
 }
 
-.fenle>div {
-  translate: all 0.2s ease;
+.fenlei>div {
+  translate: all 0.5s ease;
 }
 
 .bk {

@@ -44,11 +44,11 @@ let show = (lst: Score[], song: Song, f: number, nan: number) => {
 
   score.value = 'D'
   if (miss.value / num.value < 0.3) score.value = 'C'
-  if (miss.value / num.value < 0.2 && combo.value > 15) score.value = 'B'
-  if (miss.value / num.value < 0.1 && combo.value > 15) score.value = 'A'
-  if (miss.value < 10 && combo.value > 20) score.value = 'S'
-  if (miss.value < 5 && combo.value > 30) score.value = 'SS'
-  if (miss.value < 3 && combo.value > 50 && perfact.value / num.value > 0.7) score.value = 'SSS'
+  if (miss.value / num.value < 0.2 && combo.value > 10) score.value = 'B'
+  if (miss.value / num.value < 0.1 && combo.value > 10) score.value = 'A'
+  if (miss.value < 10 && combo.value > 15) score.value = 'S'
+  if (miss.value < 5 && combo.value > 15) score.value = 'SS'
+  if (miss.value < 3 && combo.value > 20 && perfact.value / num.value > 0.7) score.value = 'SSS'
   // if (num.value < 30) score.value = 'D'
   setTimeout(() => {
     showFlash.value = true
