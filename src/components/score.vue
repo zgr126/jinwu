@@ -6,36 +6,37 @@ let nowScore = ref(0)
 let showScore = ref(true)
 let showFlash = ref(false)
 let nowCombo = ref(0)
-let getScore = ()=>{
+let getScore = () => {
   return nowScore.value
 }
-let show = (lst: Score[])=>{
+let show = (lst: Score[]) => {
   // 找combo
   let combo = 0
-  let id = lst.reverse().findIndex(e=>{
+  let id = lst.reverse().findIndex(e => {
     return e.good == good.miss
   })
 
-  if (id == -1){
+  if (id == -1) {
     combo = lst.length
-  }else{
+  } else {
     combo = id
   }
   nowCombo.value = combo
   console.log(combo)
-  if (id != 0 && combo % 10 == 0){
+  if (id != 0 && combo % 10 == 0) {
     showFlash.value = true
-    setTimeout(()=>{
+    playAudio('')
+    setTimeout(() => {
       showFlash.value = false
     }, 3000)
   }
 
-  
+
   let comboA = 1
-  if (combo>10)comboA = 1.2
-  if (combo>20)comboA = 1.3
-  if (combo>30)comboA = 1.4
-  if (combo>40)comboA = 1.5
+  if (combo > 10) comboA = 1.2
+  if (combo > 20) comboA = 1.3
+  if (combo > 30) comboA = 1.4
+  if (combo > 40) comboA = 1.5
 
 
   let now = lst.reverse()[0]
@@ -45,11 +46,20 @@ let show = (lst: Score[])=>{
   if (now.good == good.ok) scoreP = 100
   if (now.good == good.miss) scoreP = 0
   nowScore.value += scoreP * now.len * comboA
-  
-  
-}
 
-let hide = function(){
+
+}
+function playAudio(str: string) {
+  let audio = new Audio()
+  audio.src = '/wahei.mp3'
+  audio.addEventListener('ended', function () {
+    audio.src = ''
+    audio.load();   // 重新加载元素，以释放资源
+    audio.remove(); // 如果音频元素被添加到了DOM中，从DOM中移除
+  });
+  audio.play()
+}
+let hide = function () {
   showScore.value = false
 }
 defineExpose({
@@ -66,50 +76,57 @@ defineExpose({
       <!-- <div v-if="nowFlash === 0">OK</div>
       <div v-if="nowFlash === 1">GREAT</div>
       <div v-if="nowFlash === 1">PERFACT!</div> -->
-      <div class="perfact" >Combo ×{{ nowCombo }}!!!</div>
+      <div class="perfact">Combo ×{{ nowCombo }}!!!</div>
     </div>
   </Transition>
-  
+
 </template>
 
 <style scoped>
-.nowScore{
+.nowScore {
   font-size: 70px;
   font-family: 'COLLEGEFREAKS';
   text-shadow: 0px 5px 3px black;
   color: #fff;
 }
-.ok{
+
+.ok {
   color: #02a2ff
 }
-.great{
+
+.great {
   color: #00ff00;
 }
-.perfact{
+
+.perfact {
   color: #fbff00;
 }
-.miss{
+
+.miss {
   color: #bdbdbd;
 
 }
-.good{
+
+.good {
   font-family: 'COLLEGEFREAKS';
   font-size: 60px;
   text-shadow: 5px 5px 20px black;
 }
-.good >div{
+
+.good>div {
   text-shadow: 0px 5px 3px black;
 }
 
-.score-enter-active{
+.score-enter-active {
   transition: transform 0.1s ease;
 }
 
-.score-enter-from{
+.score-enter-from {
   transform: scale(80%);
 }
-.score-enter-to{
-  
+
+.score-enter-to {
+
   transform: scale(100%);
 }
 </style>
