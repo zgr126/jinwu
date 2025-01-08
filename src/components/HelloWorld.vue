@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import ball from './ball.vue'
 import showGood from './showGood.vue';
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, } from "vue-router";
 import { good, Score, type Song } from './types';
 import score from './score.vue';
 import * as seedrandom from "seedrandom"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { good, Level, Song, type Score } from './types';
+import { good, Song, type Score } from './types';
 import aaaa from './A.vue'
 import { useRouter } from "vue-router"
 
@@ -11,7 +11,6 @@ let showFlash = ref(false)
 
 let allscore = ref(0)
 let num = ref(0)
-let nowCombo = ref(0)
 let perfact = ref(0)
 let great = ref(0)
 let ok = ref(0)

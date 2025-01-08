@@ -8,7 +8,13 @@ import HomeView from "./components/HelloWorld.vue";
 import home from "./components/main.vue";
 
 const routes = [
-  { path: "/", name: "home", component: home },
+  {
+    path: "/",
+    name: "home",
+    component: () => {
+      return import("./components/menu.vue");
+    },
+  },
   { path: "/start", name: "start", component: HomeView },
   {
     path: "/me",

@@ -78,12 +78,12 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 import { Song, Level } from './types';
-import songs from './songs.json'
+// import songs from '../../public/songs.json'
 import aaa from './A.vue'
 const router = useRouter()
-
+let songs = import('../../public/songs.json')
 let songLst = ref<Song[]>([])
 let selectOne = ref<Song | null>(null)
 let betterHistory = JSON.parse(localStorage.getItem('betterHistory') || '[]')
@@ -196,22 +196,24 @@ let selectOneH = (song: Song) => {
   })
   console.log('select song')
 }
-songs.song.map(e => {
-  let value = new Song()
-  value.name = e.name
-  // value.highTime = e.highTime
-  value.url = e.url
-  value.imgUrl = e.imgUrl
-  value.time = e.time
-  value.startTime = e.startTime
-  value.endTime = e.endTime
-  value.stepTime = e.stepTime as number[]
-  value.bpm = e.bpm as number
-  if (e.hide) {
-    return
-  }
-  makeNan(value)
-  songLst.value.push(value)
+songs.then(_songs => {
+  _songs.song.map(e => {
+    let value = new Song()
+    value.name = e.name
+    // value.highTime = e.highTime
+    value.url = e.url
+    value.imgUrl = e.imgUrl
+    value.time = e.time
+    value.startTime = e.startTime
+    value.endTime = e.endTime
+    value.stepTime = e.stepTime as number[]
+    value.bpm = e.bpm as number
+    if (e.hide) {
+      return
+    }
+    makeNan(value)
+    songLst.value.push(value)
+  })
 })
 
 let cancel = () => {

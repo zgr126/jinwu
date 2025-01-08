@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 let show = ref(false)
-let startTime: number = 0
-let liveTime: number = 0
 let dom = ref<HTMLElement | null>(null);
 let showFlash = ref(false)
 let flash = ref<HTMLElement | null>(null);

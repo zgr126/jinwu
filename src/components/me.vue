@@ -3,7 +3,7 @@ let history = JSON.parse(localStorage.getItem('history') || '[]')
 let betterHistory = JSON.parse(localStorage.getItem('betterHistory') || '[]')
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import aaaa from './A.vue'
+// import aaaa from './A.vue'
 let his = ref(history)
 let better = ref(betterHistory)
 const router = useRouter()
