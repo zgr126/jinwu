@@ -1,29 +1,33 @@
 {
   "song": [
     {
-      "name": "笔记",
-      "url": "https://illl.li/bj.mp4",
-      "imgUrl": "/mv.jpg",
-      "highTime": [
-        [0, 0]
+      "name": "荒漠上行走",
+      "url": "https://illl.li/asongs/huangmoxingzou.mp4",
+      "imgUrl": "https://illl.li/asongs/huangmoxingzou.jpg",
+      "startTime": 18150,
+      "endTime": 211771,
+      "stepTime": [
+        91423,
+        109550,
+        167545,
+        181000
       ],
-      "startTime": 4000,
-      "endTime": 8000,
-      "time": 12000,
-      "rpm": 1432,
-      "bpm": 84
+      "time": 233571,
+      "bpm": 63
     },
     {
       "name": "测试",
       "url": "https://illl.li/bj.mp4",
       "imgUrl": "/mv.jpg",
-      "highTime": [
-        [0, 0]
-      ],
       "startTime": 4000,
-      "endTime": 8000,
-      "time": 12000,
-      "bpm": 84
+      "endTime": 24000,
+      "hide": true,
+      "stepTime": [
+        8000,
+        16000
+      ],
+      "time": 26000,
+      "bpm": 60
     }
   ]
 }

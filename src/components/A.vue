@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="font" :style="{fontSize: size +'px'}">
+  <div class="font" :style="{ fontSize: size + 'px' }">
     <div class="D" v-if="value === 'D'">D</div>
     <div class="C" v-if="value === 'C'">C</div>
     <div class="B" v-if="value === 'B'">B</div>
@@ -17,7 +17,7 @@ const props = defineProps({
     <div class="SS" v-if="value === 'SS'">SS</div>
     <div class="SSS" v-if="value === 'SSS'">SSS</div>
   </div>
-  
+
 </template>
 
 <style scoped>
@@ -25,25 +25,32 @@ const props = defineProps({
   font-size: 50px;
   font-family: 'COLLEGEFREAKS';
 }
+
 .D {
   color: #8f04a1;
 }
+
 .C {
   color: #003ada;
 }
+
 .B {
   color: #008a29;
 }
+
 .A {
   color: #971302;
 }
+
 .S {
-  color: #b1a500;
+  color: #ffee00;
 }
+
 .SS {
-  color: #dab900;
+  color: #fbff00;
 }
+
 .SSS {
-  color: #ffe600;
+  color: #ffea00;
 }
 </style>
