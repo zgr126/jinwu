@@ -1,0 +1,29 @@
+{
+  "song": [
+    {
+      "name": "笔记",
+      "url": "https://illl.li/bj.mp4",
+      "imgUrl": "/mv.jpg",
+      "highTime": [
+        [0, 0]
+      ],
+      "startTime": 4000,
+      "endTime": 8000,
+      "time": 12000,
+      "rpm": 1432,
+      "bpm": 84
+    },
+    {
+      "name": "测试",
+      "url": "https://illl.li/bj.mp4",
+      "imgUrl": "/mv.jpg",
+      "highTime": [
+        [0, 0]
+      ],
+      "startTime": 4000,
+      "endTime": 8000,
+      "time": 12000,
+      "bpm": 84
+    }
+  ]
+}
