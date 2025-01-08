@@ -1,6 +1,6 @@
 <template>
   <div class="bk"></div>
-  <div class="fenlei" >
+  <div class="fenlei" v-if="!selectOne">
     <div :class="[item.class, activeF == item.name?'active':'']" @click="changeF(item.name)" v-for="(item,index) in fenl">
       {{ item.name }}
     </div>
@@ -29,7 +29,7 @@
     <div class="box ">
       <div v-for="(song, index) in songLst" :key="index" class="song" @click="selectOneH(song)">
         <img :src="song.imgUrl" :alt="song.name" class="">
-        <div class="">{{ song.name }}</div>
+        <div class="label">{{ song.name }}</div>
 
       </div>
     </div>
@@ -80,7 +80,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 import { Song, Level } from './types';
 // import songs from '../../public/songs.json'
 import aaa from './A.vue'
@@ -107,11 +107,14 @@ let activeF = ref('全部')
 let changeF = (tag: string)=>{
   activeF.value = tag
   songLst.value = []
-  if (tag === '全部'){
-    songLst.value = songSourceLst.value
-  }else{
-    songLst.value = songSourceLst.value.filter(item=>item.tag.indexOf(tag)!=-1)
-  }
+  nextTick(()=>{
+    if (tag === '全部'){
+      songLst.value = songSourceLst.value
+    }else{
+      songLst.value = songSourceLst.value.filter(item=>item.tag.indexOf(tag)!=-1)
+    }
+  })
+  
 }
 let tome = () => {
   router.push({ name: 'me' })
@@ -382,6 +385,8 @@ let cancel = () => {
 .one .oneImg {
   max-height: 300px;
   max-width: 300px;
+  min-height: 300px;
+  min-width: 300px;
   border: solid 1px #666;
 }
 
@@ -402,18 +407,28 @@ let cancel = () => {
 
 .box>div {
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
+  box-shadow: 3px 3px 3px #00000041;
+  position: relative;
 }
 
 .box>div:hover {
-  box-shadow: 3px 3px 13px #00000041;
+  box-shadow: 13px 13px 13px #00000088;
 }
-
+.box .label{
+  position:absolute;
+  bottom: -5px;
+  right: -5px;
+  z-index: 1000000;
+  background: #333;
+  color: #fff;
+  padding: 2px 5px;
+}
 
 .song {
   width: 200px;
-  height: 250px;
-  border: solid 1px #333;
+  height: 200px;
+  /* border: solid 1px #333; */
   margin: 10px;
   background: #ffffff;
 }

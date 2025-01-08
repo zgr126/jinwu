@@ -29,16 +29,164 @@
       "tag": "kpop"
     },
     {
-      "name": "Mantra",
-      "url": "https://illl.li/asongs/Mantra.mp4",
-      "imgUrl": "https://illl.li/asongs/Mantra.jpg",
-      "startTime": 14872,
-      "endTime": 124363,
+      "name": "睫毛弯弯",
+      "url": "https://illl.li/asongs/jiemaowanwan.mp4",
+      "imgUrl": "https://illl.li/asongs/jiemaowanwan.jpg",
+      "startTime": 53104,
+      "endTime": 230799,
+      "stepTime": [
+        165130,
+        187422
+      ],
+      "time": 246000,
+      "bpm": 90,
+      "tag": "流行"
+    },
+    {
+      "name": "跨时代",
+      "url": "https://illl.li/asongs/kuashidai.mp4",
+      "imgUrl": "https://illl.li/asongs/kuashidai.jpg",
+      "startTime": 49179,
+      "endTime": 209354,
+      "stepTime": [
+        96820,
+        122723
+      ],
+      "time": 214000,
+      "bpm": 107,
+      "tag": "流行"
+    },
+    {
+      "name": "恋爱ing",
+      "url": "https://illl.li/asongs/lianaiing.mp4",
+      "imgUrl": "https://illl.li/asongs/lianaiing.jpg",
+      "startTime": 16602,
+      "endTime": 172487,
       "stepTime": [
       ],
-      "time": 147308,
+      "time": 183000,
+      "bpm": 99,
+      "tag": "流行"
+    },
+    {
+      "name": "寂寞的季节",
+      "url": "https://illl.li/asongs/jimodejijie.mp4",
+      "imgUrl": "https://illl.li/asongs/jimodejijie.jpg",
+      "startTime": 31769,
+      "endTime": 219106,
+      "stepTime": [
+      ],
+      "time": 227000,
+      "bpm": 78,
+      "tag": "流行"
+    },
+    {
+      "name": "离开地球表面",
+      "url": "https://illl.li/asongs/likaidiqiubiaomian.mp4",
+      "imgUrl": "https://illl.li/asongs/likaidiqiubiaomian.jpg",
+      "startTime": 35688,
+      "endTime": 230799,
+      "stepTime": [
+      ],
+      "time": 248850,
+      "bpm": 139,
+      "tag": "流行 摇滚"
+    },
+    {
+      "name": "七年的爱",
+      "url": "https://illl.li/asongs/qiniandeai.mp4",
+      "imgUrl": "https://illl.li/asongs/qiniandeai.jpg",
+      "startTime": 16410,
+      "endTime": 228925,
+      "stepTime": [
+      ],
+      "time": 238000,
+      "bpm": 142,
+      "tag": "流行 摇滚"
+    },
+    {
+      "name": "火花",
+      "url": "https://illl.li/asongs/huohua.mp4",
+      "imgUrl": "https://illl.li/asongs/huohua.jpg",
+      "startTime": 1434,
+      "endTime": 179426,
+      "stepTime": [
+      ],
+      "time": 189000,
+      "bpm": 142,
+      "tag": "流行 摇滚"
+    },
+    {
+      "name": "第一天",
+      "url": "https://illl.li/asongs/diyitian.mp4",
+      "imgUrl": "https://illl.li/asongs/diyitian.jpg",
+      "startTime": 29197,
+      "endTime": 244000,
+      "stepTime": [
+      ],
+      "time": 253000,
+      "bpm": 88,
+      "tag": "流行"
+    },
+    {
+      "name": "爱的初体验",
+      "url": "https://illl.li/asongs/aidechutiyan.mp4",
+      "imgUrl": "https://illl.li/asongs/aidechutiyan.jpg",
+      "startTime": 18100,
+      "endTime": 239490,
+      "stepTime": [
+      ],
+      "time": 248000,
+      "bpm": 123,
+      "tag": "流行"
+    },
+    {
+      "name": "老人与海",
+      "url": "https://illl.li/asongs/laorenyuhai.mp4",
+      "imgUrl": "https://illl.li/asongs/laorenyuhai.jpg",
+      "startTime": 14777,
+      "endTime": 247664,
+      "stepTime": [
+      ],
+      "time": 256000,
+      "bpm": 130,
+      "tag": "流行"
+    },
+    {
+      "name": "DayByDay",
+      "url": "https://illl.li/asongs/DayByDay.mp4",
+      "imgUrl": "https://illl.li/asongs/DayByDay.jpg",
+      "startTime": 16429,
+      "endTime": 195751,
+      "stepTime": [
+      ],
+      "time": 207000,
+      "bpm": 118,
+      "tag": "流行 kpop"
+    },
+    {
+      "name": "泡沫",
+      "url": "https://illl.li/asongs/paomo.mp4",
+      "imgUrl": "https://illl.li/asongs/paomo.jpg",
+      "startTime": 11607,
+      "endTime": 255986,
+      "stepTime": [
+      ],
+      "time": 268000,
+      "bpm": 136,
+      "tag": "流行"
+    },
+    {
+      "name": "nightDancer",
+      "url": "https://illl.li/asongs/nightDancer.mp4",
+      "imgUrl": "https://illl.li/asongs/nightDancer.jpg",
+      "startTime": 4320,
+      "endTime": 206933,
+      "stepTime": [
+      ],
+      "time": 211000,
       "bpm": 117,
-      "tag": "kpop"
+      "tag": "流行 日本"
     },
     {
       "name": "测试",

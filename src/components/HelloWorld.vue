@@ -13,8 +13,7 @@ let nan = route.query.nan as unknown as number
 defineProps<{ msg: string }>()
 
 let src = ref('/下雨天.mp4')
-let _video = ref()
-let video = _video.value as HTMLVideoElement
+let video = ref<HTMLVideoElement|null>(null)
 let _ball = ref<InstanceType<typeof ball> | null>(null);
 let _showGood = ref<InstanceType<typeof showGood> | null>(null);
 let _score = ref<InstanceType<typeof score> | null>(null);
@@ -25,20 +24,24 @@ onMounted(() => {
   console.log(song)
   console.log(song.nan[nan])
   src.value = song.url
-  video.src = song.url
-  video.addEventListener('loadeddata', () => {
-
-    game.begin(song)
-    game.gameTime = Number(document.timeline.currentTime?.toString())
-    video.play()
-  })
+  console.log(video.value)
+  if (video.value){
+    video.value.src = song.url
+    video.value.addEventListener('loadeddata', () => {
+      console.log('loadeddata')
+      game.begin(song)
+      game.gameTime = Number(document.timeline.currentTime?.toString())
+      video?.value?.play()
+    })
+  }
+  
 })
 onBeforeUnmount(() => {
   game.clearAll()
   game.clear()
 })
 // setTimeout(()=>{
-//   video.pause()
+//   video?.value?.pause()
 // },200)
 
 
@@ -233,8 +236,8 @@ class Game {
     this.timeoutLst.map(e => {
       clearTimeout(e)
     })
-    if (!video.paused) {
-      video.pause()
+    if (!video?.value?.paused) {
+      video?.value?.pause()
       _score.value?.hide()
       let Score = _score.value?.getScore()
       _calc.value?.show(this.scoreLst, this.song as Song, Score as number, nan)
@@ -243,8 +246,8 @@ class Game {
   clearAll(){
     this.timeoutLst.map(e => {
       clearTimeout(e)
-      if (!video.paused) {
-      video.pause()
+      if (!video?.value?.paused) {
+      video?.value?.pause()
       _score.value?.hide()
     }
     })
